@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd ">
+<!-- 	SpringMVC使用注解 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+<!-- 	扫包 -->
+	<context:component-scan base-package="controller"></context:component-scan>
+	<context:component-scan base-package="exceptionhandler"></context:component-scan>
+	
+<!-- 	ViewResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!-- 		View -->
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+<!-- 	ViewController -->
+	<mvc:view-controller path="/" view-name="hotel"/>
+	<mvc:view-controller path="/header" view-name="header"/>
+	<mvc:view-controller path="/footer" view-name="footer"/>
+	<mvc:view-controller path="/submenu" view-name="subMenu"/>
+	<mvc:view-controller path="/register-1" view-name="register-1"/>
+	<mvc:view-controller path="/showLogin" view-name="login"/>
+	<mvc:view-controller path="/member/editMember" view-name="editMember"/>
+	<mvc:view-controller path="/member/editPassword" view-name="editPassword"/>
+	<mvc:view-controller path="/subscription/newSubscription" view-name="newSubscription"/>
+	<mvc:view-controller path="/subscriptionDtl/createSubscriptionDtl-1" view-name="createSubscriptionDtl-1"/>
+	<mvc:view-controller path="/subscriptionDtl/createSubscriptionDtl-2" view-name="createSubscriptionDtl-2"/>
+
+
+	<!--manager-->
+	<mvc:view-controller path="/managers/managerLogin" view-name="manager/managerLogin"/>
+	<mvc:view-controller path="/manager/subscriptionQuery" view-name="manager/subscriptionQuery"/>
+	<mvc:view-controller path="/manager/subscriptionList" view-name="manager/subscriptionList"/>
+	<mvc:view-controller path="/manager/subscriptionDetail" view-name="manager/subscriptionDetail"/>
+	<mvc:view-controller path="/manager/managerHeader" view-name="manager/managerHeader"/>
+
+
+
+<!-- 	访问静态资源 -->
+	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
+	<mvc:resources location="/style/" mapping="/style/**"></mvc:resources>
+</beans>
